@@ -86,14 +86,23 @@ function numeroMasGrande(numeros) {
   // "numeros" debe ser una matriz de enteros (int/integers)
   // Devuelve el número más grande
   // Tu código:
-  let masGrande = numeros[0];
-  for (let i = 1; i <numeros.length; i++) {
-    if (numeros[i] > masGrande) {
-      masGrande = numeros[i];
+  // let masGrande = numeros[0];
+  // for (let i = 1; i <numeros.length; i++) {
+  //   if (numeros[i] > masGrande) {
+  //     masGrande = numeros[i];
+  //   }
+  // }
+  // return masGrande;
+  let max = numeros[0];
+  numeros.forEach((numero) => {
+    if (numero > max) {
+      max = numero;
     }
-  }
-  return masGrande;
-  }
+  });
+
+  return max;
+}
+
 
 function cuentoElementos(arreglo){
   //Realiza una función que retorne la cantidad de los elementos del arreglo cuyo valor es mayor a 19.
@@ -131,12 +140,22 @@ function todosIguales(arreglo) {
   //Escriba la función todosIguales, que indique si todos los elementos de un arreglo son iguales:
   //retornar true, caso contrario retornar false.
   //Escribe tu código aquí:
-  for (let i = 0; i < arreglo.length - 1; i++) {
-    if (arreglo[i] !== arreglo[i + 1]) {
-      return false;
+  // for (let i = 0; i < arreglo.length - 1; i++) {
+  //   if (arreglo[i] !== arreglo[i + 1]) {
+  //     return false;
+  //   }
+  // }
+  // return true;
+  const primerElemento = arreglo[0];
+  let todosSonIguales = true;
+
+  arreglo.forEach((elemento) => {
+    if (elemento !== primerElemento) {
+      todosSonIguales = false;
     }
-  }
-  return true;
+  });
+
+  return todosSonIguales;
 } 
 
 function mesesDelAño(array) {
@@ -144,15 +163,24 @@ function mesesDelAño(array) {
   // "Enero", "Marzo" y "Noviembre", guardarlo en nuevo array y retornarlo.
   //Si alguno de los meses no está, devolver: "No se encontraron los meses pedidos"
   // Tu código:
-  const mesDeseado = ["Enero", "Marzo", "Noviembre"];
-  const encontrarMeses = [];
-  for (const meses of array) {
-    if (mesDeseado.includes(meses)) {
-      encontrarMeses.push(meses);
-    }
-  }
-  if (encontrarMeses.length === mesDeseado.length) {
-    return encontrarMeses;
+  // const mesDeseado = ["Enero", "Marzo", "Noviembre"];
+  // const encontrarMeses = [];
+  // for (const meses of array) {
+  //   if (mesDeseado.includes(meses)) {
+  //     encontrarMeses.push(meses);
+  //   }
+  // }
+  // if (encontrarMeses.length === mesDeseado.length) {
+  //   return encontrarMeses;
+  // } else {
+  //   return "No se encontraron los meses pedidos";
+  // }
+  var mesesEncontrados = array.filter(function(mes) {
+    return mes === "Enero" || mes === "Marzo" || mes === "Noviembre";
+  });
+
+  if (mesesEncontrados.length === 3) {
+    return mesesEncontrados;
   } else {
     return "No se encontraron los meses pedidos";
   }
@@ -162,13 +190,8 @@ function mayorACien(array) {
   //La función recibe un array con enteros entre 0 y 200. Recorrer el array y guardar en un nuevo array sólo los
   //valores mayores a 100 (no incluye el 100). Finalmente devolver el nuevo array.
   // Tu código:
-  const result = [];
-  for (const value of array) {
-    if (value > 100) {
-      result.push(value);
-    }
-  }
-  return result;
+valoresNuevos = array.filter (num => num>100);
+ return valoresNuevos
 }
 
 // No modificar nada debajo de esta línea, de lo contrario no correrán los test.
